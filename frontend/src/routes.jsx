@@ -3,6 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import AppContainer from "./components/AppContainer";
 import Landing from "./pages/Landing";
 import Home from "./pages/home";
+import Filter from "./pages/Filter";
 
 const routes = createBrowserRouter([
   {
@@ -12,7 +13,10 @@ const routes = createBrowserRouter([
 
       {
         element: <AppContainer />,
-        children: [{ path: "home", element: <Home /> }],
+        children: [
+          { path: "home", element: <Home /> },
+          { path: "filter", element: <Filter /> },
+        ],
       },
     ],
   },

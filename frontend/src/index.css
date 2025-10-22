@@ -1,7 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-  --color-body: #000000;
+  --color-body: #0e0e0e;
+  --color-body-2: #1c1c1c;
+  --color-body-3: #343434;
   --font-montserrat: "Montserrat", sans-serif;
   --font-dm-sans: "DM Sans", sans-serif;
   --color-primary: #118cd5;
@@ -20,28 +22,20 @@
 }
 
 .backgroud-gradient {
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0.41) 0%,
-    rgba(0, 0, 0, 1) 74%
-  );
+  background: radial-gradient(circle, #0e0e0e69 0%, #0e0e0e 74%);
 }
 .backgroud-gradient-2 {
-  background: #000000;
-  background: radial-gradient(
-    circle,
-    rgba(0, 0, 0, 0) 0%,
-    rgba(0, 0, 0, 1) 100%
-  );
+  background: #0e0e0e;
+  background: radial-gradient(circle, #0e0e0e00 0%, #0e0e0e 100%);
 }
 
 .backgroud-gradient-3 {
-  background: #000000;
-  background: linear-gradient(
-    89deg,
-    rgba(0, 0, 0, 0.86) 0%,
-    rgba(0, 0, 0, 0.15) 64%
-  );
+  background: #0e0e0e;
+  background: linear-gradient(89deg, #0e0e0edb 0%, #0e0e0e26 64%);
+}
+.backgroud-gradient-4 {
+  background: #0e0e0e;
+  background: linear-gradient(0deg, #0e0e0ee0 6%, #0e0e0e00 100%);
 }
 @layer base {
   body {
@@ -52,7 +46,8 @@
 
   h1,
   h2,
-  h3 {
+  h3,
+  .count-title {
     font-family: var(--font-dm-sans);
   }
 }
@@ -65,18 +60,18 @@ input {
 
 .background-glass {
   background: rgba(0, 0, 0, 0.3);
-  box-shadow: 0 4px 30px #0000001a;
+  box-shadow: 0 4px 30px #0e0e0e1a;
   backdrop-filter: blur(10.8px);
   -webkit-backdrop-filter: blur(10.8px);
 }
 
 .glass-btn {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px #0e0e0e1a;
   backdrop-filter: blur(9px);
   -webkit-backdrop-filter: blur(9px);
 }
 
-.truncate-clamp {
+.runcate-clampt {
   display: -webkit-box;
   -webkit-box-orient: vertical;
   overflow: hidden;

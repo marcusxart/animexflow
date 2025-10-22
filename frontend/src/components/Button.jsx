@@ -7,14 +7,16 @@ const Button = ({
   circle = false,
   small = false,
   transparent = false,
+  className,
   ...restProps
 }) => {
   return (
     <button
       className={classNames(
+        className,
         "flex items-center gap-2 font-medium duration-75 transition-colors  cursor-pointer text-btn-text hover:text-white whitespace-nowrap glass-btn",
         {
-          "px-5": (rounded || !rounded) && !circle,
+          "px-5": (rounded || !rounded) && !circle && !small,
           "rounded-4xl": rounded && !circle,
           "rounded-lg": !rounded && !circle,
           "rounded-full px-4": circle,
@@ -26,7 +28,7 @@ const Button = ({
             accentColor && !transparent,
         },
         {
-          "h-12": small,
+          "h-12 px-4": small,
           "h-14": !small,
         }
       )}

@@ -81,4 +81,18 @@ const iconSizes = {
   normal: 1.8,
 };
 
-export { links, aboutUs, iconSizes };
+const alphabetData = [
+  { label: "All", value: "" },
+  { label: "#", value: "other" },
+  { label: "0-9", value: "0-9" },
+  ...Array.from({ length: 26 }, (_, i) => {
+    const letter = String.fromCharCode(65 + i);
+    return { label: letter, value: letter.toLowerCase() };
+  }),
+];
+
+const footerLinks = [
+  { text: "FAQ", to: "/faq" },
+  { text: "Contact", to: "/contact" },
+];
+export { links, aboutUs, iconSizes, alphabetData, footerLinks };

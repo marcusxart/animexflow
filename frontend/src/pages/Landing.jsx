@@ -38,7 +38,7 @@ const Home = () => {
                   type="text"
                   required
                   autoComplete="off"
-                  className="px-5 flex-1 h-14 bg-input-bg rounded-lg text-white"
+                  className="px-5 flex-1 h-14 bg-body-2 rounded-lg text-white"
                 />
 
                 <Button>
