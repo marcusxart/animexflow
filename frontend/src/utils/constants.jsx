@@ -95,4 +95,119 @@ const footerLinks = [
   { text: "FAQ", to: "/faq" },
   { text: "Contact", to: "/contact" },
 ];
-export { links, aboutUs, iconSizes, alphabetData, footerLinks };
+
+const animeTypeOptions = [
+  { label: "All", value: "" },
+  { label: "Movie", value: 1 },
+  { label: "TV", value: 2 },
+  { label: "OVA", value: 3 },
+  { label: "ONA", value: 4 },
+  { label: "Special", value: 5 },
+  { label: "Music", value: 6 },
+];
+const animeStatusOptions = [
+  { label: "All", value: "" },
+  { label: "Finished airing", value: 1 },
+  { label: "Currently airing", value: 2 },
+  { label: "Not yet aired", value: 3 },
+];
+const animeSeasonOptions = [
+  { label: "All", value: "" },
+  { label: "Spring", value: 1 },
+  { label: "Summer", value: 2 },
+  { label: "Fall", value: 3 },
+  { label: "Winter", value: 4 },
+];
+const animeLanguageOptions = [
+  { label: "All", value: "" },
+  { label: "SUB", value: 1 },
+  { label: "DUB", value: 2 },
+  { label: "SUB & DUB", value: 3 },
+];
+const animeSortptions = [
+  { label: "Default", value: "" },
+  { label: "Recently added", value: "recently_added" },
+  { label: "Recently updated", value: "recently_updated" },
+  { label: "Sort", value: "score" },
+  { label: "Name A-Z", value: "namr_az" },
+  { label: "Released date", value: "released_date" },
+  { label: "Most watched", value: "most_watched" },
+];
+const animeRatedOptions = [
+  { label: "All", value: "" },
+  { label: "G - All ages", value: 1 },
+  { label: "PG - Kids & teens", value: 2 },
+  { label: "PG-13 - 13+", value: 3 },
+  { label: "R - 17+", value: 4 },
+  { label: "R+ - Mature", value: 5 },
+  { label: "RX - Adult", value: 6 },
+];
+
+const currentYear = new Date().getFullYear();
+
+const yearOptions = [
+  { label: "Default", value: "" },
+  ...Array.from({ length: currentYear - 1917 + 1 }, (_, i) => {
+    const year = 1917 + i;
+    return { label: `${year}`, value: year };
+  }),
+];
+
+const genreOptions = [
+  { label: "Action", value: 1 },
+  { label: "Adventure", value: 2 },
+  { label: "Cars", value: 3 },
+  { label: "Comedy", value: 4 },
+  { label: "Demons", value: 5 },
+  { label: "Drama", value: 6 },
+  { label: "Ecchi", value: 7 },
+  { label: "Fantasy", value: 8 },
+  { label: "Game", value: 9 },
+  { label: "Harem", value: 10 },
+  { label: "Historical", value: 11 },
+  { label: "Horror", value: 12 },
+  { label: "Isekai", value: 13 },
+  { label: "Josei", value: 14 },
+  { label: "Kids", value: 15 },
+  { label: "Magic", value: 16 },
+  { label: "Martial arts", value: 17 },
+  { label: "Mecha", value: 18 },
+  { label: "Military", value: 19 },
+  { label: "Music", value: 20 },
+  { label: "Mystery", value: 21 },
+  { label: "Parody", value: 22 },
+  { label: "Police", value: 23 },
+  { label: "Psychological", value: 24 },
+  { label: "Romance", value: 25 },
+  { label: "Samurai", value: 26 },
+  { label: "School", value: 27 },
+  { label: "Sci-Fi", value: 28 },
+  { label: "Seinen", value: 29 },
+  { label: "Shoujo", value: 30 },
+  { label: "Shoujo Ai", value: 31 },
+  { label: "Shounen", value: 32 },
+  { label: "Shounen Ai", value: 33 },
+  { label: "Slice of life", value: 34 },
+  { label: "Shape", value: 35 },
+  { label: "Sports", value: 36 },
+  { label: "Super power", value: 37 },
+  { label: "Supernatural", value: 38 },
+  { label: "Thriller", value: 39 },
+  { label: "Vampire", value: 40 },
+];
+
+export {
+  links,
+  aboutUs,
+  iconSizes,
+  alphabetData,
+  footerLinks,
+  animeTypeOptions,
+  animeStatusOptions,
+  animeSeasonOptions,
+  animeLanguageOptions,
+  animeSortptions,
+  animeRatedOptions,
+  yearOptions,
+  genreOptions,
+};
