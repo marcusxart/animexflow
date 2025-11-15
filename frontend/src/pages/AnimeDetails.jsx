@@ -22,55 +22,55 @@ const AnimeDetails = () => {
   const related = generateRandomAnimeData(10);
 
   const getRatingColor = (rating) => {
-    if (!rating) return "#666"; // grey for null
-    if (rating < 5) return "#ef4444"; // red
-    if (rating < 7.5) return "#facc15"; // yellow
-    if (rating < 8.5) return "#22c55e"; // green
-    return "#16a34a"; // strong green
+    if (!rating) return "#666";
+    if (rating < 5) return "#ef4444";
+    if (rating < 7.5) return "#facc15";
+    if (rating < 8.5) return "#22c55e";
+    return "#F47521";
   };
 
   const ratingColor = getRatingColor(anime.rating);
 
   return (
-    <div className="w-full grid grid-cols-[1fr_350px] gap-10">
+    <div className="w-full flex flex-col lg:flex-row gap-10 pt-[32  px]">
       {/* ===== MAIN CONTENT ===== */}
-      <div className="flex flex-col gap-10">
+      <div className="flex-1 flex flex-col gap-10">
         {/* Anime Info */}
-        <div className="flex flex-col md:flex-row gap-8 bg-body-2 rounded-2xl p-6 shadow-lg">
+        <div className="flex flex-col md:flex-row gap-6 lg:gap-8 bg-body-2 rounded-2xl p-5 sm:p-6 shadow-xl">
           {/* Poster */}
-          <div className="min-w-[260px] max-w-[260px]">
+          <div className="w-full md:w-[260px] flex-shrink-0">
             <img
               src={anime.poster}
               alt={anime.title}
-              className="w-full h-[380px] object-cover rounded-xl"
+              className="w-full h-[320px] sm:h-[380px] md:h-[400px] object-cover rounded-xl shadow-lg"
             />
           </div>
 
           {/* Details */}
-          <div className="flex flex-col justify-between text-gray-200 gap-5 flex-1">
+          <div className="flex flex-col justify-between gap-4 sm:gap-6 text-gray-200 flex-1">
             <div>
-              <h1 className="text-3xl font-semibold text-white mb-3">
+              <h1 className="text-2xl sm:text-3xl font-bold text-white mb-2 sm:mb-3">
                 {anime.title}
               </h1>
 
-              <p className="text-sm leading-6 text-gray-400 mb-4">
+              <p className="text-sm sm:text-base text-gray-300 leading-6 mb-3">
                 {anime.description}
               </p>
 
               {/* Genres */}
-              <div className="flex flex-wrap gap-2 mb-4">
+              <div className="flex flex-wrap gap-2 mb-3">
                 {anime.genres.map((g) => (
                   <span
                     key={g}
-                    className="px-3 py-1 bg-body-3 text-sm rounded-full border border-body-4"
+                    className="px-3 py-1 text-sm sm:text-base bg-body-3 rounded-full border border-body-4 text-gray-200"
                   >
                     {g}
                   </span>
                 ))}
               </div>
 
-              {/* Simple Flex Details */}
-              <div className="flex flex-wrap gap-x-8 gap-y-2 mt-3 text-sm text-gray-300">
+              {/* Simple Details */}
+              <div className="flex flex-wrap gap-x-6 gap-y-2 text-sm sm:text-base text-gray-300 mt-2">
                 <span>
                   <strong className="text-gray-400">Type:</strong> {anime.type}
                 </span>
@@ -93,60 +93,65 @@ const AnimeDetails = () => {
               </div>
             </div>
 
-            {/* Circle Rating */}
-            <div className="flex items-center gap-3 mt-3">
-              <div className="relative w-[70px] h-[70px]">
-                <svg
-                  className="w-full h-full transform -rotate-90"
-                  viewBox="0 0 36 36"
-                >
-                  <path
-                    className="text-body-4"
-                    strokeWidth="4"
-                    stroke="currentColor"
-                    fill="none"
-                    strokeLinecap="round"
-                    d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                  <path
-                    strokeWidth="4"
-                    stroke={ratingColor}
-                    fill="none"
-                    strokeLinecap="round"
-                    strokeDasharray={`${(anime.rating / 10) * 100}, 100`}
-                    d="M18 2.0845
-                      a 15.9155 15.9155 0 0 1 0 31.831
-                      a 15.9155 15.9155 0 0 1 0 -31.831"
-                  />
-                </svg>
-                <div className="absolute inset-0 flex items-center justify-center text-white text-sm font-semibold">
-                  {anime.rating ? anime.rating : "N/A"}
+            {/* Circle Rating + Buttons */}
+            <div className="flex flex-col sm:flex-row sm:items-center sm:gap-6 mt-3">
+              {/* Circle Rating */}
+              <div className="flex items-center gap-2">
+                <div className="relative w-[70px] h-[70px]">
+                  <svg
+                    className="w-full h-full transform -rotate-90"
+                    viewBox="0 0 36 36"
+                  >
+                    <path
+                      className="text-body-4"
+                      strokeWidth="4"
+                      stroke="currentColor"
+                      fill="none"
+                      strokeLinecap="round"
+                      d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                    <path
+                      strokeWidth="4"
+                      stroke={ratingColor}
+                      fill="none"
+                      strokeLinecap="round"
+                      strokeDasharray={`${(anime.rating / 10) * 100}, 100`}
+                      d="M18 2.0845
+                        a 15.9155 15.9155 0 0 1 0 31.831
+                        a 15.9155 15.9155 0 0 1 0 -31.831"
+                    />
+                  </svg>
+                  <div className="absolute inset-0 flex items-center justify-center text-white text-sm sm:text-base font-semibold">
+                    {anime.rating ?? "N/A"}
+                  </div>
                 </div>
+                <span className="text-sm sm:text-base text-gray-400">
+                  User Rating
+                </span>
               </div>
-              <span className="text-sm text-gray-400">User Rating</span>
-            </div>
 
-            {/* Buttons */}
-            <div className="flex flex-wrap gap-3 mt-4">
-              <button className="flex items-center gap-2 px-5 py-2.5 rounded-md bg-secondary hover:bg-secondary-hover transition-colors text-white text-sm font-medium">
-                <Play size={16} />
-                Watch Now
-              </button>
+              {/* Buttons */}
+              <div className="flex flex-wrap gap-3 mt-3 sm:mt-0">
+                <button className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-md bg-[#F47521] hover:bg-[#ff8435] transition-all text-white text-sm sm:text-base font-semibold shadow-md">
+                  <Play size={16} />
+                  Watch Now
+                </button>
 
-              <button className="flex items-center gap-2 px-5 py-2.5 rounded-md border border-gray-600 hover:border-secondary hover:text-secondary transition-colors text-sm font-medium text-gray-300">
-                <Plus size={16} />
-                Add to List
-              </button>
+                <button className="flex items-center gap-2 px-4 sm:px-5 py-2 sm:py-2.5 rounded-md border border-gray-600 hover:border-[#F47521] hover:text-[#F47521] transition-all text-gray-300 text-sm sm:text-base font-medium">
+                  <Plus size={16} />
+                  Add to List
+                </button>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Related Anime */}
-        <div className="w-full flex flex-col gap-6">
+        <div className="w-full flex flex-col gap-4 sm:gap-6">
           <Header title="Related Anime" />
-          <div className="grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-[32px_20px]">
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4 sm:gap-6">
             {related?.map((anime) => (
               <Card key={anime.id} data={anime} />
             ))}
@@ -155,7 +160,9 @@ const AnimeDetails = () => {
       </div>
 
       {/* ===== SIDEBAR ===== */}
-      <TopAnime />
+      <div className="w-full lg:w-[350px] flex-shrink-0">
+        <TopAnime />
+      </div>
     </div>
   );
 };

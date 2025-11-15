@@ -7,16 +7,37 @@ import Card from "../components/Card";
 
 const Filter = () => {
   const searched = useMemo(() => generateRandomAnimeData(20), []);
+
   return (
-    <div className="pt-[24px]">
-      <div className="grid grid-cols-[1fr_350px] gap-10">
+    <div>
+      {/* Responsive grid */}
+      <div
+        className="
+          grid 
+          grid-cols-1 
+          md:grid-cols-[1fr_320px] 
+          gap-8 md:gap-10
+        "
+      >
+        {/* MAIN CONTENT */}
         <div>
           <Filtering />
 
-          <div className="mt-[40px] flex flex-col gap-6 w-full ">
+          <div className="mt-10 flex flex-col gap-6 w-full">
             <Header title={"Search results for: hh"} italic />
 
-            <div className="grid grid-cols-[repeat(auto-fill,minmax(190px,1fr))] gap-[32px_20px]">
+            {/* Responsive Card Grid */}
+            <div
+              className="
+                grid 
+                grid-cols-2 
+                sm:grid-cols-3 
+                md:grid-cols-3 
+                lg:grid-cols-4 
+                xl:grid-cols-5 
+                gap-4 sm:gap-5 md:gap-6
+              "
+            >
               {searched?.map((anime) => (
                 <Card key={anime.id} data={anime} />
               ))}
@@ -24,7 +45,10 @@ const Filter = () => {
           </div>
         </div>
 
-        <TopAnime />
+        {/* SIDEBAR: Top Anime */}
+        <div className="order-last md:block">
+          <TopAnime />
+        </div>
       </div>
     </div>
   );

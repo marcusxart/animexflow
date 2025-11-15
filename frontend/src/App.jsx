@@ -1,10 +1,13 @@
 import { RouterProvider } from "react-router-dom";
 import routes from "./routes";
+import { ToastProvider } from "./components/ToastProvider";
 
 function App() {
   return (
     <>
-      <RouterProvider router={routes} />
+      <ToastProvider>
+        <RouterProvider router={routes} />
+      </ToastProvider>
     </>
   );
 }

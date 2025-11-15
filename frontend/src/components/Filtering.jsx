@@ -44,10 +44,13 @@ const Filtering = ({
   };
 
   return (
-    <div className="flex flex-col gap-6 w-full bg-body-2/70 backdrop-blur-sm p-6 rounded-2xl shadow-md">
+    <div className="flex flex-col gap-6 w-full bg-body-2/70 backdrop-blur-sm p-4 sm:p-6 rounded-2xl shadow-md">
+      {/* Dropdown Filters */}
       <div>
-        <h3 className="text-2xl mb-3 font-semibold text-white">Filter</h3>
-        <ul className="grid grid-cols-4 gap-4">
+        <h3 className="text-xl sm:text-2xl mb-3 font-semibold text-white">
+          Filter
+        </h3>
+        <ul className="grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-4">
           <li>
             <Dropdown
               options={animeTypeOptions}
@@ -107,7 +110,7 @@ const Filtering = ({
           <li>
             <Dropdown
               options={yearOptions}
-              placeholder="Select start year"
+              placeholder="Start year"
               placeholderLabel="Start year"
               value={value.sy}
               onChange={(val) => setValue((prev) => ({ ...prev, sy: val }))}
@@ -116,7 +119,7 @@ const Filtering = ({
           <li>
             <Dropdown
               options={yearOptions}
-              placeholder="Select end year"
+              placeholder="End year"
               placeholderLabel="End year"
               value={value.ey}
               onChange={(val) => setValue((prev) => ({ ...prev, ey: val }))}
@@ -125,9 +128,12 @@ const Filtering = ({
         </ul>
       </div>
 
+      {/* Genre Filters */}
       <div>
-        <h3 className="text-2xl mb-3 font-semibold text-white">Genre</h3>
-        <ul className="flex flex-wrap gap-3">
+        <h3 className="text-xl sm:text-2xl mb-3 font-semibold text-white">
+          Genre
+        </h3>
+        <ul className="flex flex-wrap gap-2 sm:gap-3">
           {genreOptions.map((item) => {
             const active = isInGenre(item.value);
             return (
@@ -135,7 +141,7 @@ const Filtering = ({
                 key={item.value}
                 onClick={() => toggleGenre(item.value)}
                 className={classNames(
-                  "cursor-pointer select-none px-4 py-2 rounded-full text-sm font-medium border transition-all duration-200",
+                  "cursor-pointer select-none px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium border transition-all duration-200",
                   "hover:scale-105 hover:shadow-sm",
                   active
                     ? "bg-secondary text-white border-secondary"
@@ -149,11 +155,12 @@ const Filtering = ({
         </ul>
       </div>
 
+      {/* Filter Button */}
       <Button
-        className="bg-accent hover:bg-accent-hover w-fit text-white font-medium"
+        className="bg-accent hover:bg-accent-hover w-full sm:w-fit text-white font-medium flex items-center justify-center gap-2"
         small
       >
-        <Funnel />
+        <Funnel size={16} />
         Filter
       </Button>
     </div>
