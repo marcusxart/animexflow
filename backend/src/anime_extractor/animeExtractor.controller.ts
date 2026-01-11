@@ -19,6 +19,16 @@ class AnimeExtractorController {
       data,
     });
   });
+
+  static getAnimeInfo = asyncHandler(async (req, res) => {
+    const id = req.params.id;
+    const data = await AnimeExtractorService.getAnimeInfo(id);
+
+    res.status(200).json({
+      status: "success",
+      data,
+    });
+  });
 }
 
 export default AnimeExtractorController;

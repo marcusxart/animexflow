@@ -9,10 +9,19 @@ const requestLoggerMiddleware = (
   const start = Date.now();
 
   res.on("finish", () => {
-    const duration = Date.now() - start;
+    const durationMs = Date.now() - start;
+
+    // Calculate minutes and remaining seconds
+    const totalSeconds = Math.floor(durationMs / 1000);
+    const mins = Math.floor(totalSeconds / 60);
+    const secs = totalSeconds % 60;
+
+    // Format the string: e.g., "1m 15s" or just "15s"
+    const timeLabel = mins > 0 ? `${mins}m ${secs}s` : `${secs}s`;
 
     let statusColor: (text: string | number) => string;
     let statusEmoji = "";
+
     if (res.statusCode >= 500) {
       statusColor = chalk.red;
       statusEmoji = "❌";
@@ -31,8 +40,8 @@ const requestLoggerMiddleware = (
       `${chalk.blue(req.method)} ${chalk.magenta(
         req.originalUrl
       )} ${statusColor(res.statusCode)} ${statusEmoji} - ${chalk.white(
-        duration + "ms"
-      )}`
+        durationMs + "ms"
+      )} ${chalk.gray("[" + timeLabel + "]")}`
     );
   });
 

@@ -6,7 +6,7 @@ export async function fetchInstance<T = any>(
   options?: FetchOptions
 ): Promise<FetchResult<T>> {
   try {
-    const response = await fetch(config.baseurl_v2 + endpoint, {
+    const response = await fetch(config.baseurl + endpoint, {
       headers: { ...(config.headers || {}), ...(options?.headers || {}) },
       ...options,
     });
